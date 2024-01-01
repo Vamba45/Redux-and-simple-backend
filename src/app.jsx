@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCustomerAction, removeCustomerAction } from "./store/customerReducer";
+import { fetchCustomers } from "./store/asyncActions/customers";
 
 export default function Application () {
     const dispatch = useDispatch();
@@ -35,6 +36,7 @@ export default function Application () {
             <button onClick={() => addCash(Number(prompt()))}>Положить на счёт</button>
             <button onClick={() => addCustomer(prompt())}>Добавить клиента</button>
             <button onClick={() => removeCustomer(prompt())}>Удалить клиента</button>
+            <button onClick={() => dispatch(fetchCustomers())}>Загрузить клиентов</button>
             {customers.length > 0 ?
                 <div>
                     {
